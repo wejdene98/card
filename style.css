@@ -1,0 +1,108 @@
+:root {
+  --card: #0a0e29;
+  --white: #f9f9f9;
+  --input: #1d9375;
+  --toolip: rgba(247, 120, 120, 0.76);
+}
+
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(200px, 1fr));
+  grid-gap: 10px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: var(--card);
+  border-radius: 10px;
+
+}
+
+.floating-figure {
+  float: left;
+  margin: 0 5px 5px 0;
+}
+
+.floating-figure img {
+  width: 100px;
+  height: 100px;
+  border-radius: 5px;
+
+}
+
+.card .card-header p {
+  margin: 4px;
+  color: var(--white);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+}
+
+.card .card-body {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 15px;
+  gap: 10px;
+
+}
+
+.card .card-body input {
+  background-color: var(--input);
+  border: 1px solid var(--white);
+  color: var(--white);
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.card .card-footer {
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.card .card-header .writing {
+  display: flex;
+  align-items: center;
+}
+
+.tooltip::before,
+.tooltip::after {
+  --scale: 0;
+  position: absolute;
+  content: attr(data-title);
+  height: 25px;
+  width: max-content;
+  transform: translateX(10%) translateY(-120%) scale(var(--scale));
+  transform: 150ms transform;
+  transform-origin: bottom center;
+}
+
+.tooltip::before {
+  background: var(--toolip);
+  text-align: center;
+  color: var(--white);
+  padding: 10px;
+
+}
+
+.tooltip:hover::before,
+.tooltip:hover::after {
+  --scale: 1;
+}
+
+.tooltip::after {
+  content: '';
+  border: 10px solid transparent;
+  transform: translateX(-190%) translateY(-20%) scale(var(--scale));
+  border-top-color: var(--white);
+}
